@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sykkelstasjoner i Oslo</title>
+    <link rel="stylesheet" href="/static/leaflet/leaflet.css">
+    <script src="/static/leaflet/leaflet.js"></script>
+</head>
+<body>
+    <h1>Sykkelstasjoner i Oslo</h1>
+    <div id="map" style="height: 80vh;"></div>
+    <script>
+        const stations = {{ stations|tojson }};
+        const map = L.map('map').setView([59.91, 10.75], 13);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+        stations.forEach(station => {
+            L.marker([station.lat, station.lon])
+                .addTo(map)
+                .bindPopup(`<strong>${station.name}</strong><br>Ledige sykler: ${station.num_bikes_available}<br>Ledige låser: ${station.num_docks_available}`);
+        });
+    </script>
+</body>
+</html>
