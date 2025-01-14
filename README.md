@@ -36,4 +36,4 @@ Frontend
 
 Feilsøking
 Sjekk backend-logger ved å åpne terminalen og se etter feil.
-Sørg for at Client-Identifier er korrekt i backend/app.py.
+Sørg for at Client-Identifier er korrekt i backend/b_app.py.
